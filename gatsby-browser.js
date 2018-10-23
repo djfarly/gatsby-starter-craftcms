@@ -1,6 +1,6 @@
-import wrapWithProvider from '~/store/provider'
+import wrapWithProvider from '~/store/provider';
 
-export const wrapRootElement = wrapWithProvider
+export const wrapRootElement = wrapWithProvider;
 
 export const onClientEntry = () => {
 	/*
@@ -31,6 +31,6 @@ export const onClientEntry = () => {
 		fonts.forEach(font => document.fonts.add(font))
 	})
 	*/
-}
+};
 
-export const shouldUpdateScroll = () => true
+export const shouldUpdateScroll = () => true;

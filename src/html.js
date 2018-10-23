@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /* eslint-disable react/destructuring-assignment */
 
 const removeNoJsClass =
-	'var html=document.getElementsByTagName("html")[0];html.classList?html.classList.remove("no-js"):html.className=el.className.replace(new RegExp("(^|\\b)"+className.split(" ").join("|")+"(\\b|$)","gi")," ");'
+	'var html=document.getElementsByTagName("html")[0];html.classList?html.classList.remove("no-js"):html.className=el.className.replace(new RegExp("(^|\\b)"+className.split(" ").join("|")+"(\\b|$)","gi")," ");';
 
 export default class HTML extends React.Component {
 	render() {
@@ -31,7 +31,7 @@ export default class HTML extends React.Component {
 					{this.props.postBodyComponents}
 				</body>
 			</html>
-		)
+		);
 	}
 }
 
@@ -43,5 +43,5 @@ HTML.propTypes = {
 	bodyAttributes: PropTypes.object,
 	preBodyComponents: PropTypes.array,
 	body: PropTypes.string,
-	postBodyComponents: PropTypes.array
-}
+	postBodyComponents: PropTypes.array,
+};

@@ -1,8 +1,8 @@
-import React, { Fragment, Component } from 'react'
-import PropTypes from 'prop-types'
-import '~/styles/style.css'
-import posed, { PoseGroup } from 'react-pose'
-import { ContextProviderComponent } from './context'
+import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
+import '~/styles/style.css';
+import posed, { PoseGroup } from 'react-pose';
+import { ContextProviderComponent } from './context';
 
 const RouteContainer = posed.div({
 	entering: { x: '100%' },
@@ -12,18 +12,18 @@ const RouteContainer = posed.div({
 		x: 0,
 		transition: {
 			opacity: { ease: 'easeOut', duration: 300 },
-			x: { ease: 'easeIn', duration: 300 }
-		}
+			x: { ease: 'easeIn', duration: 300 },
+		},
 	},
 	exit: {
 		opacity: 0,
 		x: '-10%',
 		delay: 0,
 		transition: {
-			opacity: { ease: 'easeOut', duration: 150 }
-		}
-	}
-})
+			opacity: { ease: 'easeOut', duration: 150 },
+		},
+	},
+});
 
 // const AnimateNav = posed.nav({
 // 	visible: { scale: 1 },
@@ -32,7 +32,7 @@ const RouteContainer = posed.div({
 
 export default class Wrapper extends Component {
 	render() {
-		const { children, location } = this.props
+		const { children, location } = this.props;
 
 		return (
 			<ContextProviderComponent>
@@ -44,11 +44,11 @@ export default class Wrapper extends Component {
 					</PoseGroup>
 				</Fragment>
 			</ContextProviderComponent>
-		)
+		);
 	}
 }
 
 Wrapper.propTypes = {
 	children: PropTypes.node.isRequired,
-	location: PropTypes.object.isRequired
-}
+	location: PropTypes.object.isRequired,
+};

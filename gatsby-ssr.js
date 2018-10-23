@@ -1,5 +1,5 @@
-import React from 'react'
-import wrapWithProvider from './src/store/provider'
+import React from 'react';
+import wrapWithProvider from './src/store/provider';
 
 export const onRenderBody = ({ setHeadComponents }) => {
 	setHeadComponents([
@@ -8,10 +8,8 @@ export const onRenderBody = ({ setHeadComponents }) => {
 			rel="sitemap"
 			type="application/xml"
 			href="/sitemap.xml"
-		/>
-	])
-}
+		/>,
+	]);
+};
 
-export const wrapRootElement = wrapWithProvider
-
-
+export const wrapRootElement = wrapWithProvider;

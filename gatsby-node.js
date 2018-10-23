@@ -1,16 +1,16 @@
-const R = require('ramda')
-const glob = require('glob')
-const path = require('path')
-const fs = require('fs')
-const PurgeCssPlugin = require('purgecss-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const sitemap = require('sitemap')
-const pify = require('pify')
-const config = require('./src/site.config')
+const R = require('ramda');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const PurgeCssPlugin = require('purgecss-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const sitemap = require('sitemap');
+const pify = require('pify');
+const config = require('./src/site.config');
 
 const PATHS = {
-	src: path.join(__dirname, 'src')
-}
+	src: path.join(__dirname, 'src'),
+};
 
 const purgeCssConfig = {
 	paths: glob.sync(`${PATHS.src}/**/*.js`, { nodir: true }),
@@ -18,18 +18,18 @@ const purgeCssConfig = {
 		{
 			extractor: class {
 				static extract(content) {
-					return content.match(/[A-Za-z0-9-_:/]+/g) || []
+					return content.match(/[A-Za-z0-9-_:/]+/g) || [];
 				}
 			},
-			extensions: ['js']
-		}
+			extensions: ['js'],
+		},
 	],
 	whitelist: [''],
-	whitelistPatterns: [/body/, /headroom/, /ReactModal/, /ril/]
-}
+	whitelistPatterns: [/body/, /headroom/, /ReactModal/, /ril/],
+};
 
 const createPages = ({ actions, graphql }) => {
-	const { createPage } = actions
+	const { createPage } = actions;
 
 	// do the big ole query
 	return graphql(`
@@ -50,34 +50,34 @@ const createPages = ({ actions, graphql }) => {
 		// catch them errors
 		if (result.errors) {
 			// eslint-disable-next-line no-console
-			result.errors.forEach(e => console.error(e.toString()))
-			return Promise.reject(result.errors)
+			result.errors.forEach(e => console.error(e.toString()));
+			return Promise.reject(result.errors);
 		}
 
 		// grab the entries off the result
 		const {
 			data: {
-				craft: { entries }
-			}
-		} = result
+				craft: { entries },
+			},
+		} = result;
 
 		entries.forEach(entry => {
-			const { uri, id } = entry
+			const { uri, id } = entry;
 
 			createPage({
 				context: {
 					id,
-					uri
+					uri,
 				},
 				path: uri,
-				component: path.resolve('src/templates/blog-post.js')
-			})
-		})
-	})
-}
+				component: path.resolve('src/templates/blog-post.js'),
+			});
+		});
+	});
+};
 
 exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
-	const prevConfig = getConfig()
+	const prevConfig = getConfig();
 
 	actions.replaceWebpackConfig({
 		...prevConfig,
@@ -87,7 +87,7 @@ exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
 			// add rules for the svg sprite loader
 			rules: [
 				...prevConfig.module.rules.map(item => {
-					const { test } = item
+					const { test } = item;
 
 					if (
 						test &&
@@ -95,34 +95,34 @@ exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
 					) {
 						return {
 							...item,
-							test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/
-						}
+							test: /\.(ico|jpg|jpeg|png|gif|webp)(\?.*)?$/,
+						};
 					}
 
-					return { ...item }
+					return { ...item };
 				}),
 				{
 					test: /\.svg$/,
 					use: [
 						{
-							loader: require.resolve('svg-sprite-loader')
-						}
-					]
-				}
-			]
-		}
-	})
+							loader: require.resolve('svg-sprite-loader'),
+						},
+					],
+				},
+			],
+		},
+	});
 
 	actions.setWebpackConfig({
 		resolve: {
 			alias: {
 				'~': `${__dirname}/src`,
-				'node-fetch$': 'node-fetch/lib/index.js' // https://github.com/bitinn/node-fetch/issues/493
-			}
-		}
-	})
+				'node-fetch$': 'node-fetch/lib/index.js', // https://github.com/bitinn/node-fetch/issues/493
+			},
+		},
+	});
 
-	if (stage.includes('develop')) return
+	if (stage.includes('develop')) return;
 
 	// Add PurgeCSS in production
 	// See: https://github.com/gatsbyjs/gatsby/issues/5778#issuecomment-402481270
@@ -130,26 +130,26 @@ exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
 		actions.setWebpackConfig({
 			plugins: [
 				new PurgeCssPlugin(purgeCssConfig),
-				new OptimizeCSSAssetsPlugin({})
-			]
-		})
+				new OptimizeCSSAssetsPlugin({}),
+			],
+		});
 	}
-}
+};
 
 exports.onCreateBabelConfig = ({ actions }) => {
 	actions.setBabelPlugin({
-		name: 'babel-plugin-ramda'
-	})
+		name: 'babel-plugin-ramda',
+	});
 
 	actions.setBabelPlugin({
 		name: 'babel-plugin-emotion',
 		options: {
-			extract: true
-		}
-	})
-}
+			extract: true,
+		},
+	});
+};
 
-exports.createPages = createPages
+exports.createPages = createPages;
 
 exports.onPostBuild = async ({ graphql }) => {
 	const resp = await graphql(`
@@ -160,15 +160,15 @@ exports.onPostBuild = async ({ graphql }) => {
 				}
 			}
 		}
-	`)
+	`);
 
 	const {
 		data: {
-			craft: { entries }
-		}
-	} = resp
+			craft: { entries },
+		},
+	} = resp;
 
-	const saved = path.join('./public', '/sitemap.xml')
+	const saved = path.join('./public', '/sitemap.xml');
 
 	const map = sitemap.createSitemap({
 		hostname: config.hostname,
@@ -176,12 +176,12 @@ exports.onPostBuild = async ({ graphql }) => {
 			R.map(uri => ({
 				url: `${config.hostname}/${uri}/`,
 				changefreq: 'daily',
-				priority: 0.7
+				priority: 0.7,
 			})),
-			R.pluck('uri')
-		)(entries)
-	})
-	const writeFile = pify(fs.writeFile)
+			R.pluck('uri'),
+		)(entries),
+	});
+	const writeFile = pify(fs.writeFile);
 
-	return writeFile(saved, map.toString())
-}
+	return writeFile(saved, map.toString());
+};

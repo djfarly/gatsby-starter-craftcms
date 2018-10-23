@@ -1,8 +1,8 @@
-const config = require('./src/site.config')
+const config = require('./src/site.config');
 
 module.exports = {
 	siteMetadata: {
-		...config
+		...config,
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
@@ -10,15 +10,15 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-layout',
 			options: {
-				component: require.resolve('./src/wrapper/layout.js')
-			}
+				component: require.resolve('./src/wrapper/layout.js'),
+			},
 		},
 		{
 			resolve: 'gatsby-plugin-emotion',
 			options: {
 				// Accepts all options defined by `babel-plugin-emotion` plugin.
-				autoLabel: true
-			}
+				autoLabel: true,
+			},
 		},
 		{
 			resolve: 'gatsby-source-graphql',
@@ -27,14 +27,14 @@ module.exports = {
 				typeName: 'Craft',
 				url: 'https://yourdomain/api',
 				headers: {
-					Authorization: 'bearer XXXXX'
-				}
-			}
+					Authorization: 'bearer XXXXX',
+				},
+			},
 		},
 		{
 			resolve: 'gatsby-plugin-manifest',
-			options: config.manifest
+			options: config.manifest,
 		},
-		'gatsby-plugin-offline'
-	]
-}
+		'gatsby-plugin-offline',
+	],
+};

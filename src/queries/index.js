@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 export const relatedBlog = graphql`
 	fragment relatedBlog on Craft_Blog {
@@ -10,4 +10,4 @@ export const relatedBlog = graphql`
 			content
 		}
 	}
-`
+`;

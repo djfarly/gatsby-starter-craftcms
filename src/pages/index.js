@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { graphql, Link } from 'gatsby'
-import { relatedBlog } from '~/queries' // eslint-disable-line
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { graphql, Link } from 'gatsby';
+import { relatedBlog } from '~/queries'; // eslint-disable-line
 
 class IndexPage extends Component {
 	render() {
 		const {
 			data: {
-				craft: { entries }
+				craft: { entries },
 			},
 			count,
 			increment,
-			incrementAsync
-		} = this.props
+			incrementAsync,
+		} = this.props;
 
 		return (
 			<Fragment>
@@ -32,23 +32,23 @@ class IndexPage extends Component {
 					</div>
 				))}
 			</Fragment>
-		)
+		);
 	}
 }
 
 const mapState = state => ({
-	count: state.count
-})
+	count: state.count,
+});
 
 const mapDispatch = ({ count: { increment, incrementAsync } }) => ({
 	increment: () => increment(1),
-	incrementAsync: () => incrementAsync(1)
-})
+	incrementAsync: () => incrementAsync(1),
+});
 
 export default connect(
 	mapState,
-	mapDispatch
-)(IndexPage)
+	mapDispatch,
+)(IndexPage);
 
 export const pageQuery = graphql`
 	query IndexQuery {
@@ -58,4 +58,4 @@ export const pageQuery = graphql`
 			}
 		}
 	}
-`
+`;
