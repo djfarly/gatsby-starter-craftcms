@@ -20,9 +20,9 @@ export default class Pages extends Component {
 }
 
 export const pageQuery = graphql`
-	query PageQueryBySlug($slug: String!) {
+	query PageQueryById($id: [Int]!) {
 		craft {
-			entry(slug: $slug) {
+			entry(id: $id) {
 				... on Craft_Pages {
 					pageBuilder {
 						...PageBuilderQuery

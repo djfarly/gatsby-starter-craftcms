@@ -7,8 +7,8 @@ module.exports = async ({ actions, graphql }) => {
     {
       craft {
         entries {
+          id
           uri
-          slug
           __typename
         }
       }
@@ -25,12 +25,12 @@ module.exports = async ({ actions, graphql }) => {
   const { entries } = result.data.craft;
 
   entries.forEach(entry => {
-    const { uri, slug, __typename } = entry;
+    const { id, uri, __typename } = entry;
 
     // Craft CMS section with slug "pages" and URI-Format "{parent.uri}/{slug}"
     if (__typename == 'Craft_Pages') {
       createPage({
-        context: { slug },
+        context: { id },
         path: uri,
         component: path.resolve('src/templates/page.js'),
       });
