@@ -1,28 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-import Text from './Text';
-import Image from './Image';
+import * as pageBuilderComponents from './PageBuilderComponents';
+
+const componentNamePattern = 'Craft_PageBuilder';
+
+function getComponent(__typename) {
+  const componentName = __typename.replace(componentNamePattern, '');
+  return pageBuilderComponents[componentName] || false;
+}
 
 export default class PageBuilder extends Component {
   render() {
     const { pageBuilder } = this.props;
 
-    const componentNamePattern = 'Craft_PageBuilder';
-    // todo: how to create a react component from string?
-    const components = {
-      Text: Text,
-      Image: Image,
-    };
-
     return (
-      <Fragment>
+      <>
         {pageBuilder.map((el, index) => {
-          const PageBuilderComponent =
-            components[el.__typename.replace(componentNamePattern, '')];
-          return <PageBuilderComponent pageBuilder={el} key={index} />;
+          const PageBuilderComponent = getComponent(el.__typename);
+          return PageBuilderComponent ? (
+            <PageBuilderComponent pageBuilder={el} key={index} />
+          ) : null;
         })}
-      </Fragment>
+      </>
     );
   }
 }
