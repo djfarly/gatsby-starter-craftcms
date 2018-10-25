@@ -5,7 +5,7 @@ export default class Image extends Component {
     const { image } = this.props;
 
     return (
-      <img {...this.props} />
+      <img {...this.props} style={{maxWidth: '100%'}}/>
     );
   }
 }

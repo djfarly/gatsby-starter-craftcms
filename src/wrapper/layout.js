@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/style.css';
 import posed, { PoseGroup } from 'react-pose';
 import { ContextProviderComponent } from './context';
 
