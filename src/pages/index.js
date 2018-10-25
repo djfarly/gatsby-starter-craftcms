@@ -1,49 +1,54 @@
 import React, { Component, Fragment } from 'react';
 import { graphql, Link } from 'gatsby';
-import { relatedBlog } from '~/queries'; // eslint-disable-line
+
+import PageBuilder from '../components/PageBuilder/PageBuilder';
 
 class IndexPage extends Component {
-	render() {
-		const {
-			data: {
-				craft: { entries },
-			},
-			count,
-			increment,
-			incrementAsync,
-		} = this.props;
+  render() {
+    const {
+      data: {
+        craft: { entries, entry },
+      },
+    } = this.props;
 
+    return (
+      <Fragment>
+        <h2>All Pages:</h2>
 
-		return (
-			<Fragment>
-				<div>
-					The count is {count}
-					<button type="button" onClick={increment}>
-						increment
-					</button>
-					<button type="button" onClick={incrementAsync}>
-						incrementAsync
-					</button>
-				</div>
-				<pre>{JSON.stringify(entries, null, 2)}</pre>
-				{entries.map(({ title, id, uri }) => (
-					<div key={id}>
-						<Link to={`/${uri}`}>{title}</Link>
-					</div>
-				))}
-			</Fragment>
-		);
-	}
+        {entries.map(({ id, slug, title, uri }) => {
+          if (slug != 'home')
+            return (
+              <div key={id}>
+                <Link to={`/${uri}`}>{title}</Link>
+              </div>
+            );
+        })}
+
+        <PageBuilder pageBuilder={entry.pageBuilder} />
+      </Fragment>
+    );
+  }
 }
 
 export default IndexPage;
 
 export const pageQuery = graphql`
-	query IndexQuery {
-		craft {
-			entries(section: [home], limit: 3, order: "postDate desc") {
-				...relatedBlog
-			}
-		}
-	}
+  query IndexQuery {
+    craft {
+      entries {
+        id
+        slug
+        title
+        uri
+      }
+
+      entry(slug: "home") {
+        ... on Craft_Home {
+          pageBuilder {
+            ...PageBuilderQuery
+          }
+        }
+      }
+    }
+  }
 `;

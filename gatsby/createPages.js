@@ -6,11 +6,10 @@ module.exports = async ({ actions, graphql }) => {
   const result = await graphql(`
     {
       craft {
-        entries(orderBy: "postDate desc") {
-          __typename
-          title
+        entries {
           uri
-          postDate
+          slug
+          __typename
         }
       }
     }
@@ -26,12 +25,15 @@ module.exports = async ({ actions, graphql }) => {
   const { entries } = result.data.craft;
 
   entries.forEach(entry => {
-    const { uri } = entry;
+    const { uri, slug, __typename } = entry;
 
-    createPage({
-      context: { uri },
-      path: uri,
-      component: path.resolve('src/templates/blog-post.js'),
-    });
+    // Craft CMS section with slug "pages" and URI-Format "{parent.uri}/{slug}"
+    if (__typename == 'Craft_Pages') {
+      createPage({
+        context: { slug },
+        path: uri,
+        component: path.resolve('src/templates/page.js'),
+      });
+    }
   });
 };
