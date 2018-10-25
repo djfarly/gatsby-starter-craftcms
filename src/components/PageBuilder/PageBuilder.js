@@ -15,14 +15,14 @@ export default class PageBuilder extends Component {
     const { pageBuilder } = this.props;
 
     return (
-      <>
+      <div className="page-builder">
         {pageBuilder.map((el, index) => {
           const PageBuilderComponent = getComponent(el.__typename);
           return PageBuilderComponent ? (
             <PageBuilderComponent pageBuilder={el} key={index} />
           ) : null;
         })}
-      </>
+      </div>
     );
   }
 }
@@ -35,8 +35,12 @@ export const query = graphql`
       ...PageBuilderTextQuery
     }
 
-    ... on Craft_PageBuilderImage {
-      ...PageBuilderImageQuery
+    ... on Craft_PageBuilderImageText {
+      ...PageBuilderImageTextQuery
+    }
+
+    ... on Craft_PageBuilderSlider {
+      ...PageBuilderSliderQuery
     }
   }
 `;
