@@ -1,7 +1,3 @@
-import wrapWithProvider from '~/store/provider';
-
-export const wrapRootElement = wrapWithProvider;
-
 export const onClientEntry = () => {
 	/*
 

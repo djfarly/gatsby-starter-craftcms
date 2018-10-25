@@ -40,7 +40,6 @@
 		"react/no-unused-state": "warn",
 		"react/prefer-stateless-function": "off",
 		"react/prop-types": "off",
-		"semi": ["warn", "never"],
 		"camelcase": "off"
 	},
 	"parser": "babel-eslint",

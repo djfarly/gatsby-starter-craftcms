@@ -25,9 +25,10 @@ module.exports = {
 			options: {
 				fieldName: 'craft',
 				typeName: 'Craft',
-				url: 'https://yourdomain/api',
+				url: 'http://XXX/api/',
 				headers: {
-					Authorization: 'bearer XXXXX',
+					Authorization:
+						'bearer XXXX',
 				},
 			},
 		},

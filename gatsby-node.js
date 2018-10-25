@@ -35,14 +35,12 @@ const createPages = ({ actions, graphql }) => {
 	return graphql(`
 		{
 			craft {
-				entries(section: [blog], orderBy: "postDate desc") {
+				entries(section: [home], orderBy: "postDate desc") {
 					__typename
-					... on Craft_Blog {
-						title
-						uri
-						id
-						postDate
-					}
+					title
+					uri
+					id
+					postDate
 				}
 			}
 		}
