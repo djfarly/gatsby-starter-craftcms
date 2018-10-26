@@ -28,7 +28,7 @@ module.exports = async ({ actions, graphql }) => {
     const { id, uri, __typename } = entry;
 
     // Craft CMS section with slug "pages" and URI-Format "{parent.uri}/{slug}"
-    if (__typename == 'Craft_Pages') {
+    if (__typename === 'Craft_Pages') {
       createPage({
         context: { id },
         path: uri,
