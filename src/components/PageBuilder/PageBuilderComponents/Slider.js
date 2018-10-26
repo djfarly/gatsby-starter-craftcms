@@ -11,6 +11,10 @@ export default class Slider extends Component {
   render() {
     const { images } = this.props.pageBuilder;
 
+    if (!images.length) {
+      return null;
+    }
+
     return (
       <FlickitySlider
         options={flickityOptions}

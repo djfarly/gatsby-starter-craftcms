@@ -9,8 +9,8 @@ export default class ImageText extends Component {
 
     return (
       <div className="page-builder__image-text">
-        <Image src={image[0].url} />
-        <div>{text}</div>
+        {image[0] && <Image src={image[0].url} />}
+        {text && <div>{text}</div>}
       </div>
     );
   }

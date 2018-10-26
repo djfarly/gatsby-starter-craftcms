@@ -8,8 +8,8 @@ export default class Text extends Component {
 
     return (
       <div className="page-builder__text">
-        <CustomHeadlineTag>{headline}</CustomHeadlineTag>
-        <div>{text}</div>
+        {headline && <CustomHeadlineTag>{headline}</CustomHeadlineTag>}
+        {text && <div>{text}</div>}
       </div>
     );
   }
