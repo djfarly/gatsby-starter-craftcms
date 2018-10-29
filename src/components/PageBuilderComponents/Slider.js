@@ -18,7 +18,7 @@ export default class Slider extends Component {
     return (
       <SliderFlickity options={flickityOptions}>
         {images.map(el => (
-          <div style={{ width: '100%', height: '300px' }} key={el}>
+          <div style={{ width: '100%', height: '300px' }} key={el.id}>
             <Image src={el.url} />
           </div>
         ))}
@@ -30,6 +30,7 @@ export default class Slider extends Component {
 export const query = graphql`
   fragment PageBuilderSliderQuery on Craft_PageBuilderSlider {
     images {
+      id
       url
     }
   }

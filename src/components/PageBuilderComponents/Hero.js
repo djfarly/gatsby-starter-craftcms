@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'react-emotion';
+import Headline from 'components/Headline';
+import Text from 'components/Text';
 
 const HeroSection = styled('section')(
   {
@@ -17,13 +19,6 @@ const HeroSection = styled('section')(
 
 const HeroContent = styled('div')({
   maxWidth: 900,
-});
-
-const Headline = styled('h1')({
-  textAlign: 'center',
-});
-
-const Text = styled('div')({
   textAlign: 'center',
 });
 
@@ -37,8 +32,8 @@ export default class Hero extends Component {
     return (
       <HeroSection backgroundImage={bgImage}>
         <HeroContent>
-          {headline && <Headline>{headline}</Headline>}
-          {text && <Text>{text}</Text>}
+          {headline && <Headline tag="h1">{headline}</Headline>}
+          {text && <Text tag="span">{text}</Text>}
         </HeroContent>
       </HeroSection>
     );

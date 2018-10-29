@@ -19,7 +19,7 @@ export default class PageBuilder extends Component {
         {pageBuilder.map(el => {
           const PageBuilderComponent = getComponent(el.__typename);
           return PageBuilderComponent ? (
-            <PageBuilderComponent pageBuilder={el} key={el} />
+            <PageBuilderComponent pageBuilder={el} key={el.__typename} />
           ) : null;
         })}
       </div>
