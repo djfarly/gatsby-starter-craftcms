@@ -42,5 +42,9 @@ export const query = graphql`
     ... on Craft_PageBuilderSlider {
       ...PageBuilderSliderQuery
     }
+
+    ... on Craft_PageBuilderHero {
+      ...PageBuilderHeroQuery
+    }
   }
 `;
