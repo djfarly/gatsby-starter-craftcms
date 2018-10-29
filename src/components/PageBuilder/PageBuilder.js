@@ -15,7 +15,7 @@ export default class PageBuilder extends Component {
     const { pageBuilder } = this.props;
 
     return (
-      <div className="page-builder">
+      <div>
         {pageBuilder.map((el, index) => {
           const PageBuilderComponent = getComponent(el.__typename);
           return PageBuilderComponent ? (

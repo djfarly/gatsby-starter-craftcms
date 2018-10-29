@@ -3,34 +3,37 @@ import { graphql, Link } from 'gatsby';
 import styled from 'react-emotion';
 import { css } from 'emotion';
 
-const HeroSection = styled('section')`
-  ${props => ({
-    backgroundImage: props.backgroundImage
-  })}
+const HeroSection = styled('section')(
+  {
+    backgroundSize: 'cover',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  props => ({
+    backgroundImage: props.backgroundImage,
+  }),
+);
 
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const HeroContent = styled('div')({
+  maxWidth: 900,
+});
 
-const HeroContent = styled('div')`
-  max-width: 900px;
-`;
+const Headline = styled('h1')({
+  textAlign: 'center',
+});
 
-const Headline = styled('h1')`
-  text-align: center;
-`
-
-const Text = styled('div')`
-  text-align: center;
-`
+const Text = styled('div')({
+  textAlign: 'center',
+});
 
 export default class Hero extends Component {
   render() {
     const { headline, text, backgroundImage } = this.props.pageBuilder;
-    const bgImage = backgroundImage[0] ? 'url(' + backgroundImage[0].url + ')' : 'none';
+    const bgImage = backgroundImage[0]
+      ? 'url(' + backgroundImage[0].url + ')'
+      : 'none';
 
     return (
       <HeroSection backgroundImage={bgImage}>

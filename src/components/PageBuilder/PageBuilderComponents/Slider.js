@@ -16,17 +16,10 @@ export default class Slider extends Component {
     }
 
     return (
-      <FlickitySlider
-        options={flickityOptions}
-        className="page-builder__slider slider"
-      >
+      <FlickitySlider options={flickityOptions}>
         {images.map((el, index) => (
-          <div
-            className="slider__slide"
-            style={{ width: '100%', height: '300px' }}
-            key={index}
-          >
-            <Image src={el.url} className="slider__image" />
+          <div style={{ width: '100%', height: '300px' }} key={index}>
+            <Image src={el.url} />
           </div>
         ))}
       </FlickitySlider>
