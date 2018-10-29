@@ -31,7 +31,7 @@ export default class Hero extends Component {
   render() {
     const { headline, text, backgroundImage } = this.props.pageBuilder;
     const bgImage = backgroundImage[0]
-      ? 'url(' + backgroundImage[0].url + ')'
+      ? `url(' ${backgroundImage[0].url} ')`
       : 'none';
 
     return (

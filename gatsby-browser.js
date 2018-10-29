@@ -1,5 +1,5 @@
 export const onClientEntry = () => {
-	/*
+  /*
 
 	Lazyload custom fonts
 

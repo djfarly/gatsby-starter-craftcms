@@ -1,27 +1,18 @@
-const manifest = {
-  name: 'Gatsby Starter Craftcms',
-  short_name: 'hello!',
-  start_url: '/',
-  background_color: '#181818',
-  theme_color: '#E9E9E9',
-  display: 'minimal-ui',
-  icon: 'static/img/favicon.png', // This path is relative to the root of the site.
-};
+const env = require('dotenv').config().parsed;
+const themeDefault = require('./src/components/Layout/themeDefault.js');
+const siteConfig = require('./src/site.config');
+
+console.log('test', themeDefault);
 
 module.exports = {
-  siteMetadata: {
-    siteTitle: 'Gatsby Starter Craftcms',
-    title: 'Gatsby Starter Craftcms',
-    hostname: 'https://www.yourdomain.com', // no trailing slash (used to create xml sitemap)
-    manifest,
-  },
+  siteMetadata: siteConfig.siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-layout',
       options: {
-        component: require.resolve('./src/wrapper/layout.js'),
+        component: require.resolve('./src/components/Layout/Layout.js'),
       },
     },
     {
@@ -32,19 +23,23 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: siteConfig.webfontconfig,
+    },
+    {
       resolve: 'gatsby-source-graphql',
       options: {
         fieldName: 'craft',
         typeName: 'Craft',
-        url: 'http://XXX/api/',
+        url: env.API_URL,
         headers: {
-          Authorization: 'bearer XXXX',
+          Authorization: env.API_TOKEN,
         },
       },
     },
     {
       resolve: 'gatsby-plugin-manifest',
-      options: manifest,
+      options: siteConfig.siteMetadata.manifest,
     },
     'gatsby-plugin-offline',
   ],

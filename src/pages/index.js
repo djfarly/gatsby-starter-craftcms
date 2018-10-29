@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import PageBuilder from '../components/PageBuilder/PageBuilder';
+import PageBuilder from 'components/PageBuilder';
 
 class IndexPage extends Component {
   render() {
@@ -12,7 +12,7 @@ class IndexPage extends Component {
     } = this.props;
 
     return (
-      <Fragment>
+      <>
         <h2>All Pages:</h2>
 
         {entries.map(({ id, slug, title, uri }) => {
@@ -28,7 +28,7 @@ class IndexPage extends Component {
         })}
 
         <PageBuilder pageBuilder={entry.pageBuilder} />
-      </Fragment>
+      </>
     );
   }
 }

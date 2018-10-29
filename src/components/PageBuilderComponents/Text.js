@@ -7,7 +7,7 @@ export default class Text extends Component {
     const CustomHeadlineTag = `${headlineTag}`;
 
     return (
-      <div>
+      <div className="page-builder__text">
         {headline && <CustomHeadlineTag>{headline}</CustomHeadlineTag>}
         {text && <div>{text}</div>}
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
-import FlickitySlider from '../../FlickitySlider/';
-import Image from '../../Image';
+import SliderFlickity from 'components/SliderFlickity';
+import Image from 'components/Image';
 
 const flickityOptions = {
   contain: 'true',
@@ -16,13 +16,13 @@ export default class Slider extends Component {
     }
 
     return (
-      <FlickitySlider options={flickityOptions}>
-        {images.map((el, index) => (
-          <div style={{ width: '100%', height: '300px' }} key={index}>
+      <SliderFlickity options={flickityOptions}>
+        {images.map(el => (
+          <div style={{ width: '100%', height: '300px' }} key={el}>
             <Image src={el.url} />
           </div>
         ))}
-      </FlickitySlider>
+      </SliderFlickity>
     );
   }
 }

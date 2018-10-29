@@ -1,9 +1,9 @@
 {
-	"eslintIntegration": true,
-	"singleQuote": true,
-	"semi": true,
-	"trailingComma": "all",
-	"useTabs": false,
-	"cssEnable": ["less", "css", "scss"],
-	"tabWidth": 2
+  "eslintIntegration": true,
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "all",
+  "useTabs": false,
+  "cssEnable": ["less", "css", "scss", "sass"],
+  "tabWidth": 2
 }

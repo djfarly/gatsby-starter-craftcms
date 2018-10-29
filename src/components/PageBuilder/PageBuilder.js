@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 
-import * as pageBuilderComponents from './PageBuilderComponents';
+import * as pageBuilderComponents from 'components/PageBuilderComponents';
 
 const componentNamePattern = 'Craft_PageBuilder';
 
@@ -16,10 +16,10 @@ export default class PageBuilder extends Component {
 
     return (
       <div>
-        {pageBuilder.map((el, index) => {
+        {pageBuilder.map(el => {
           const PageBuilderComponent = getComponent(el.__typename);
           return PageBuilderComponent ? (
-            <PageBuilderComponent pageBuilder={el} key={index} />
+            <PageBuilderComponent pageBuilder={el} key={el} />
           ) : null;
         })}
       </div>

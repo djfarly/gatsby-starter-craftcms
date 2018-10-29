@@ -1,7 +1,10 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import posed, { PoseGroup } from 'react-pose';
-import { ContextProviderComponent } from './context';
+import { ThemeProvider } from 'emotion-theming';
+
+import themeDefault from './themeDefault';
+import './globalStyles';
 
 const RouteContainer = posed.div({
   entering: { x: '100%' },
@@ -29,17 +32,15 @@ export default class Wrapper extends Component {
     const { children, location } = this.props;
 
     return (
-      <ContextProviderComponent>
-        <Fragment>
-          <PoseGroup preEnterPose="entering">
-            <RouteContainer key={location.key}>
-              <div style={{ margin: '50px auto', maxWidth: '900px' }}>
-                {children}
-              </div>
-            </RouteContainer>
-          </PoseGroup>
-        </Fragment>
-      </ContextProviderComponent>
+      <ThemeProvider theme={themeDefault}>
+        <PoseGroup preEnterPose="entering">
+          <RouteContainer key={location.key}>
+            <div style={{ margin: '50px auto', maxWidth: '900px' }}>
+              {children}
+            </div>
+          </RouteContainer>
+        </PoseGroup>
+      </ThemeProvider>
     );
   }
 }
