@@ -16,12 +16,15 @@ class IndexPage extends Component {
         <h2>All Pages:</h2>
 
         {entries.map(({ id, slug, title, uri }) => {
-          if (slug != 'home')
+          if (slug !== 'home')
             return (
               <div key={id}>
                 <Link to={`/${uri}`}>{title}</Link>
               </div>
             );
+          else {
+            return null
+          }
         })}
 
         <PageBuilder pageBuilder={entry.pageBuilder} />

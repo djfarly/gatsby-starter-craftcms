@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 export default class Text extends Component {
   render() {
-    const { id, text, headline, headlineTag } = this.props.pageBuilder;
+    const { text, headline, headlineTag } = this.props.pageBuilder;
     const CustomHeadlineTag = `${headlineTag}`;
 
     return (

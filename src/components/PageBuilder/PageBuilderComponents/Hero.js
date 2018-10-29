@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'react-emotion';
-import { css } from 'emotion';
 
 const HeroSection = styled('section')(
   {
