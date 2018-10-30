@@ -1,8 +1,5 @@
 const env = require('dotenv').config().parsed;
-const themeDefault = require('./src/components/Layout/themeDefault.js');
 const siteConfig = require('./src/site.config');
-
-console.log('test', themeDefault);
 
 module.exports = {
   siteMetadata: siteConfig.siteMetadata,
