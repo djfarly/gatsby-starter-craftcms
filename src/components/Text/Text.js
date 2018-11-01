@@ -4,6 +4,8 @@ import styled from 'react-emotion';
 
 const StyledP = styled('p')(props => ({
   color: props.theme.colorText,
+  letterSpacing: '0.8px',
+  lineHeight: '30px',
 }));
 
 const StyledSpan = styled('span');
