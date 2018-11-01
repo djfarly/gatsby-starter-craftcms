@@ -25,6 +25,9 @@ injectGlobal`
   h2 {
     font-size: 1.8em;
   }
+  img {
+    vertical-align: bottom;
+  }
   ul {
     list-style-position: inside;
   }
