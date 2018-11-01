@@ -18,4 +18,20 @@ module.exports = {
       families: ['Open Sans:400,700'],
     },
   },
+  responsive: {
+    breakpoints: {
+      mobile: 0,
+      tablet: 481,
+      tabletFluid: 737,
+      laptop: 977,
+      desktop: 1441,
+    },
+    wrapSizes: {
+      mobile: '100%',
+      tablet: '100%',
+      tabletFluid: 720,
+      laptop: 960,
+      desktop: 1240,
+    },
+  },
 };
