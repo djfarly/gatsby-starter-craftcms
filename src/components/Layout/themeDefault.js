@@ -1,12 +1,17 @@
 module.exports = {
+  backgroundPrimary: '#120f0b',
+  overlayPrimary:
+    'linear-gradient(135deg, rgba(13,13,13,0.5) 0%,rgba(248,248,248,0.5) 100%)',
   borderRadius: '50%',
   colorBorder: '#02b0ab',
-  colorText: '#555',
+  colorText: '#D8D8D8',
   fontFamilyPrimary: 'Open Sans, sans-serif',
   fontFamilySecondary: 'Montserrat, sans-serif',
+  colorPrimary: '#02b0ab',
   colorLink: '#02b0ab',
   colorLinkHover: '#02b0ab',
   colorLinkActive: '#02b0ab',
+  colorLinkCurrent: 'red',
   scrollBarThumb: '#eaeaea',
   scrollBarTrack: '#f9f9f9',
   scrollBarWidth: '10px',
