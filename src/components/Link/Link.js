@@ -4,7 +4,7 @@ import { css } from 'emotion';
 import themeDefault from 'components/Layout/themeDefault';
 
 export default function Link(props) {
-  const { children, display } = props;
+  const { children, display, activecss } = props;
   return (
     <GatsbyLink
       className={css`
@@ -18,6 +18,15 @@ export default function Link(props) {
           color: ${themeDefault.colorLinkActive};
         }
       `}
+      activeClassName={
+        activecss
+          ? css`
+              ${activecss};
+            `
+          : css`
+              color: ${themeDefault.colorLinkCurrent};
+            `
+      }
       {...props}
     >
       {children}
