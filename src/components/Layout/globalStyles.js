@@ -5,9 +5,11 @@ import themeDefault from './themeDefault';
 injectGlobal`
   html {
     box-sizing: border-box;
-    font-family: ${themeDefault.fontFamilyPrimary};
-    font-size: 16px;
+    font-family: ${themeDefault.fontFamilySecondary};
     color: ${themeDefault.colorText};
+  }
+  body {
+    background-color: ${themeDefault.backgroundPrimary};
   }
   * {
     box-sizing: inherit;
@@ -25,5 +27,11 @@ injectGlobal`
   }
   *::-webkit-scrollbar-thumb {
     background-color: ${themeDefault.scrollBarThumb};
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      color: inherit!important;
+    }
   }
 `;
