@@ -2,19 +2,25 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'react-emotion';
 
+import Link from 'components/Link';
 import Wrap from 'components/Wrap';
 import WrapGrid from 'components/WrapGrid';
 import Logo from 'components/Logo';
+import Headline from 'components/Headline';
+import Text from 'components/Text';
 import Image from 'components/Image';
 import NavigationPrimarySections from 'components/NavigationPrimarySections';
 
-const NavigationItem = styled('div')(
+const NavigationItem = styled('span')(
   {
-    color: 'darkorchid',
+    fontSize: '24px',
+    fontWeight: 900,
+    letterSpacing: '1px',
+    textDecoration: 'none',
   },
   props => ({
-    fontSize: props.fontSize,
-    borderRadius: props.theme.borderRadius,
+    color: props.theme.colorBright,
+    fontFamily: props.theme.fontFamilySecondary,
   }),
 );
 
@@ -33,10 +39,19 @@ export default function NavigationPrimary(props) {
       <WrapGrid>
         <Logo />
 
+        <Headline>Test</Headline>
+        <Text>Lol</Text>
+
         {allItems.map(item => (
-          <NavigationItem fontSize={16} key={item.navigationEntry[0].id}>
-            {item.navigationEntry[0].title}
-          </NavigationItem>
+          <Link
+            display="block"
+            to={item.navigationEntry[0].uri}
+            key={item.navigationEntry[0].id}
+          >
+            <NavigationItem fontSize={16}>
+              {item.navigationEntry[0].title}
+            </NavigationItem>
+          </Link>
         ))}
 
         <NavigationPrimarySections content={navigationTeaser} />
