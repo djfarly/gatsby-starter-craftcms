@@ -1,13 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 
-export default class Headline extends Component {
-  render() {
-    const HeadlineTag = `${this.props.tag}`;
+const StyledH1 = styled('h1')({
+  fontSize: '2.4em',
+  maxWidth: '100%',
+});
 
-    return (
-      <HeadlineTag style={{ maxWidth: '100%' }}>
-        {this.props.children}
-      </HeadlineTag>
-    );
-  }
+const StyledH2 = styled('h1')({
+  fontSize: '1.8em',
+  maxWidth: '100%',
+});
+
+const StyledH3 = styled('h1')({
+  maxWidth: '100%',
+});
+
+const StyledH4 = styled('h1')({
+  maxWidth: '100%',
+});
+
+const StyledH5 = styled('h1')({
+  maxWidth: '100%',
+});
+
+const StyledH6 = styled('h1')({
+  maxWidth: '100%',
+});
+
+export default function Headline(props) {
+  const { element, children } = props;
+  const ComponentList = {
+    h1: StyledH1,
+    h2: StyledH2,
+    h3: StyledH3,
+    h4: StyledH4,
+    h5: StyledH5,
+    h6: StyledH6,
+  };
+  const Component = ComponentList[element];
+
+  return <Component>{children}</Component>;
 }
+
+Headline.propTypes = {
+  element: PropTypes.string,
+};
+
+Headline.defaultProps = {
+  element: 'h3',
+};

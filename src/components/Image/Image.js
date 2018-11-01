@@ -37,6 +37,7 @@ const StyledImage = styled('img')(
     left: 0,
     width: '100%',
     height: '100%',
+    verticalAlign: 'bottom',
   },
   props => ({
     objectFit: props.fit,
@@ -46,6 +47,7 @@ const StyledImage = styled('img')(
 const StyledImageRaw = styled('img')(
   {
     maxWidth: '100%',
+    verticalAlign: 'bottom',
   },
   props => ({
     objectFit: props.fit,
