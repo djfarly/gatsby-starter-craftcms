@@ -1,37 +1,41 @@
-import React, { Component } from 'react';
-import { graphql, Link } from 'gatsby';
+import React from 'react';
+import { graphql } from 'gatsby';
 
 import PageBuilder from 'components/PageBuilder';
+import WrapGrid from 'components/WrapGrid';
+import Link from 'components/Link';
+import Headline from 'components/Headline';
 
-class IndexPage extends Component {
-  render() {
-    const {
-      data: {
-        craft: { entries, entry },
-      },
-    } = this.props;
+export default function IndexPage(props) {
+  const {
+    data: {
+      craft: { entries, entry },
+    },
+  } = props;
 
-    return (
-      <>
-        <h2>All Pages:</h2>
+  return (
+    <WrapGrid>
+      <Headline>All Pages:</Headline>
 
-        {entries.map(({ id, slug, title, uri }) => {
-          if (slug !== 'home')
-            return (
-              <div key={id}>
-                <Link to={`/${uri}`}>{title}</Link>
-              </div>
-            );
-          return null;
-        })}
+      <Link to="/">Home</Link>
 
-        <PageBuilder pageBuilder={entry.pageBuilder} />
-      </>
-    );
-  }
+      <br />
+      <br />
+
+      {entries.map(({ id, slug, title, fullUri }) => {
+        if (slug !== 'home')
+          return (
+            <div key={id}>
+              <Link to={`${fullUri}`}>{title}</Link>
+            </div>
+          );
+        return null;
+      })}
+
+      <PageBuilder pageBuilder={entry.pageBuilder} />
+    </WrapGrid>
+  );
 }
-
-export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -40,7 +44,7 @@ export const pageQuery = graphql`
         id
         slug
         title
-        uri
+        fullUri
       }
 
       entry(slug: "home") {
