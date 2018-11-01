@@ -159,7 +159,7 @@ export default function media(valueDefault = 0, valueMax = 0, axis = 'width') {
 
   // If the range is impossible send out a warning
   if (isValueDefaultNumber && valueDefault > valueMax) {
-    console.warn(`Min value is larger than max value!`);
+    console.warn('Min value is larger than max value!');
     return '';
   }
 
