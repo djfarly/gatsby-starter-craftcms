@@ -22,9 +22,7 @@ class IndexPage extends Component {
                 <Link to={`/${uri}`}>{title}</Link>
               </div>
             );
-          else {
-            return null
-          }
+          return null;
         })}
 
         <PageBuilder pageBuilder={entry.pageBuilder} />

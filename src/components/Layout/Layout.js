@@ -34,11 +34,7 @@ export default class Wrapper extends Component {
     return (
       <ThemeProvider theme={themeDefault}>
         <PoseGroup preEnterPose="entering">
-          <RouteContainer key={location.key}>
-            <div style={{ margin: '50px auto', maxWidth: '900px' }}>
-              {children}
-            </div>
-          </RouteContainer>
+          <RouteContainer key={location.key}>{children}</RouteContainer>
         </PoseGroup>
       </ThemeProvider>
     );
