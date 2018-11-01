@@ -4,6 +4,7 @@
   "version": "1.0.1",
   "author": "Dave Stockley <magicspon@gmail.com>",
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@rematch/core": "^1.0.0-beta.4",
     "autoprefixer": "^9.0.1",
     "babel-plugin-emotion": "^9.2.6",
