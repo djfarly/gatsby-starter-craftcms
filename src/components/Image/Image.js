@@ -16,7 +16,6 @@ const StyledWrapImage = styled('div')(
 
 const StyledBackground = styled('div')(
   {
-    position: 'absolute',
     left: 0,
     top: 0,
     width: '100%',
@@ -24,6 +23,7 @@ const StyledBackground = styled('div')(
     backgroundRepeat: 'no-repeat',
   },
   props => ({
+    position: props.position ? props.position : 'absolute',
     backgroundImage: `url(${props.src})`,
     backgroundSize: props.fit,
     backgroundPosition: props.backgroundPosition,
@@ -32,7 +32,6 @@ const StyledBackground = styled('div')(
 
 const StyledImage = styled('img')(
   {
-    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
@@ -40,6 +39,7 @@ const StyledImage = styled('img')(
     verticalAlign: 'bottom',
   },
   props => ({
+    position: props.position ? props.position : 'absolute',
     objectFit: props.fit,
   }),
 );
@@ -62,6 +62,7 @@ export default function Image(props) {
     isBackground,
     backgroundPosition,
     aspectRatio,
+    position,
   } = props;
 
   const aspectRatios = {
@@ -89,6 +90,7 @@ export default function Image(props) {
         src={src}
         alt={alt}
         fit={fit}
+        position={position}
         backgroundPosition={backgroundPosition}
       />
     </ComponentWrap>
