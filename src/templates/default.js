@@ -16,7 +16,7 @@ export default class Pages extends Component {
 }
 
 export const pageQuery = graphql`
-  query PageQueryById($id: [Int]!) {
+  query QueryDefault($id: [Int]!) {
     craft {
       entry(id: $id) {
         ... on Craft_Pages {

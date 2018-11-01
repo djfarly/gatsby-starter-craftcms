@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs');
+const templateDefault = path.resolve('src/templates/default.js');
 
 module.exports = async ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -10,6 +12,9 @@ module.exports = async ({ actions, graphql }) => {
           id
           uri
           __typename
+          section {
+            handle
+          }
         }
       }
     }
@@ -25,14 +30,15 @@ module.exports = async ({ actions, graphql }) => {
   const { entries } = result.data.craft;
 
   entries.forEach(entry => {
-    const { id, uri, __typename } = entry;
+    const { id, uri, section } = entry;
+    const template = path.resolve(`src/templates/${section.handle}.js`);
 
     // Craft CMS section with slug "pages" and URI-Format "{parent.uri}/{slug}"
-    if (__typename === 'Craft_Pages') {
+    if (uri) {
       createPage({
         context: { id },
         path: uri,
-        component: path.resolve('src/templates/page.js'),
+        component: fs.existsSync(template) ? template : templateDefault,
       });
     }
   });
