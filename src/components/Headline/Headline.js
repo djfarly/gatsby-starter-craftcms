@@ -7,24 +7,24 @@ const StyledH1 = styled('h1')({
   maxWidth: '100%',
 });
 
-const StyledH2 = styled('h1')({
+const StyledH2 = styled('h2')({
   fontSize: '1.8em',
   maxWidth: '100%',
 });
 
-const StyledH3 = styled('h1')({
+const StyledH3 = styled('h3')({
   maxWidth: '100%',
 });
 
-const StyledH4 = styled('h1')({
+const StyledH4 = styled('h4')({
   maxWidth: '100%',
 });
 
-const StyledH5 = styled('h1')({
+const StyledH5 = styled('h5')({
   maxWidth: '100%',
 });
 
-const StyledH6 = styled('h1')({
+const StyledH6 = styled('h6')({
   maxWidth: '100%',
 });
 
