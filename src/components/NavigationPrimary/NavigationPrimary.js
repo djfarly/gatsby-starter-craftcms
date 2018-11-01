@@ -2,25 +2,26 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'react-emotion';
 
+import Header from 'components/Header';
+import Overlay from 'components/Overlay';
 import Link from 'components/Link';
 import Wrap from 'components/Wrap';
 import WrapGrid from 'components/WrapGrid';
-import Logo from 'components/Logo';
-import Headline from 'components/Headline';
-import Text from 'components/Text';
 import Image from 'components/Image';
 import NavigationPrimarySections from 'components/NavigationPrimarySections';
+import Footer from 'components/Footer';
 
-const NavigationItem = styled('span')(
+const NavigationItem = styled('h3')(
   {
     fontSize: '24px',
     fontWeight: 900,
-    letterSpacing: '1px',
-    textDecoration: 'none',
+    letterSpacing: '3px',
+    textTransform: 'uppercase',
   },
   props => ({
     color: props.theme.colorBright,
     fontFamily: props.theme.fontFamilySecondary,
+    marginBottom: props.theme.spaceDoubleEight,
   }),
 );
 
@@ -35,33 +36,25 @@ export default function NavigationPrimary(props) {
         alt={navigationBackground[0].title}
         isBackground
         fit="cover"
+        position="fixed"
       />
+      <Overlay position="fixed" />
+      <Header />
       <WrapGrid>
-        <Logo />
-
-        <Headline element="h2">Evo Boutique Fitnessstudios</Headline>
-        <Text>
-          EVO hebt das Konzept Fitnessstudio auf ein völlig neues Level. Bei uns
-          findest du absolute Top-Ausstattung sowie bestens ausgebildete
-          Personal Trainer. Unser Boutique Design bietet dir eine Atmosphäre, in
-          der du dich wie im eigenen Wohnzimmer fühlst.
-        </Text>
-        <Text>Alles über EVO Fitness</Text>
-
         {allItems.map(item => (
-          <Link
-            display="block"
-            to={item.navigationEntry[0].uri}
-            key={item.navigationEntry[0].id}
-          >
-            <NavigationItem fontSize={16}>
+          <NavigationItem key={item.navigationEntry[0].id}>
+            <Link
+              activecss="opacity: 0.5;"
+              to={item.navigationEntry[0].fullUri}
+            >
               {item.navigationEntry[0].title}
-            </NavigationItem>
-          </Link>
+            </Link>
+          </NavigationItem>
         ))}
 
         <NavigationPrimarySections content={navigationTeaser} />
       </WrapGrid>
+      <Footer />
     </Wrap>
   );
 }
@@ -70,8 +63,7 @@ export const queryAllItems = graphql`
   fragment NavigationAllItems on Craft_NavigationPrimaryNavigation {
     navigationEntry {
       id
-      url
-      uri
+      fullUri
       title
     }
     navigationTeaser
@@ -86,8 +78,7 @@ export const queryCurrentItem = graphql`
   fragment NavigationCurrentItem on Craft_NavigationPrimaryNavigation {
     navigationEntry {
       id
-      url
-      uri
+      fullUri
       title
     }
   }
