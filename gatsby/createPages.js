@@ -10,7 +10,7 @@ module.exports = async ({ actions, graphql }) => {
       craft {
         entries {
           id
-          uri
+          fullUri
           __typename
           section {
             handle
@@ -30,14 +30,14 @@ module.exports = async ({ actions, graphql }) => {
   const { entries } = result.data.craft;
 
   entries.forEach(entry => {
-    const { id, uri, section } = entry;
+    const { id, fullUri, section } = entry;
     const template = path.resolve(`src/templates/${section.handle}.js`);
 
     // Craft CMS section with slug "pages" and URI-Format "{parent.uri}/{slug}"
-    if (uri) {
+    if (fullUri) {
       createPage({
         context: { id },
-        path: uri,
+        path: fullUri,
         component: fs.existsSync(template) ? template : templateDefault,
       });
     }
