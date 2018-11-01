@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import posed, { PoseGroup } from 'react-pose';
 import { ThemeProvider } from 'emotion-theming';
@@ -27,18 +27,16 @@ const RouteContainer = posed.div({
   },
 });
 
-export default class Wrapper extends Component {
-  render() {
-    const { children, location } = this.props;
+export default function Wrapper(props) {
+  const { children, location } = props;
 
-    return (
-      <ThemeProvider theme={themeDefault}>
-        <PoseGroup preEnterPose="entering">
-          <RouteContainer key={location.key}>{children}</RouteContainer>
-        </PoseGroup>
-      </ThemeProvider>
-    );
-  }
+  return (
+    <ThemeProvider theme={themeDefault}>
+      <PoseGroup preEnterPose="entering">
+        <RouteContainer key={location.key}>{children}</RouteContainer>
+      </PoseGroup>
+    </ThemeProvider>
+  );
 }
 
 Wrapper.propTypes = {
