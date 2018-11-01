@@ -39,8 +39,14 @@ export default function NavigationPrimary(props) {
       <WrapGrid>
         <Logo />
 
-        <Headline>Test</Headline>
-        <Text>Lol</Text>
+        <Headline element="h2">Evo Boutique Fitnessstudios</Headline>
+        <Text>
+          EVO hebt das Konzept Fitnessstudio auf ein völlig neues Level. Bei uns
+          findest du absolute Top-Ausstattung sowie bestens ausgebildete
+          Personal Trainer. Unser Boutique Design bietet dir eine Atmosphäre, in
+          der du dich wie im eigenen Wohnzimmer fühlst.
+        </Text>
+        <Text>Alles über EVO Fitness</Text>
 
         {allItems.map(item => (
           <Link
