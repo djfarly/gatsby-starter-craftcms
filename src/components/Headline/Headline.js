@@ -2,31 +2,74 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-const StyledH1 = styled('h1')({
-  fontSize: '2.4em',
-  maxWidth: '100%',
-});
+const StyledH1 = styled('h1')(
+  {
+    fontSize: '34px',
+    lineHeight: '42px',
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    fontWeight: 900,
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
-const StyledH2 = styled('h2')({
-  fontSize: '1.8em',
-  maxWidth: '100%',
-});
+const StyledH2 = styled('h2')(
+  {
+    fontSize: '34px',
+    lineHeight: '42px',
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    fontWeight: 900,
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
-const StyledH3 = styled('h3')({
-  maxWidth: '100%',
-});
+const StyledH3 = styled('h3')(
+  {
+    fontSize: '24px',
+    lineHeight: '32px',
+    letterSpacing: '3px',
+    textTransform: 'uppercase',
+    fontWeight: 900,
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
-const StyledH4 = styled('h4')({
-  maxWidth: '100%',
-});
+const StyledH4 = styled('h4')(
+  {
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
-const StyledH5 = styled('h5')({
-  maxWidth: '100%',
-});
+const StyledH5 = styled('h5')(
+  {
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
-const StyledH6 = styled('h6')({
-  maxWidth: '100%',
-});
+const StyledH6 = styled('h6')(
+  {
+    maxWidth: '100%',
+  },
+  props => ({
+    color: props.theme.colorBright,
+  }),
+);
 
 export default function Headline(props) {
   const { element, children } = props;
