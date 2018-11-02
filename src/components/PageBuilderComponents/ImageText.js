@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
+
 import Image from 'components/Image';
 import Text from 'components/Text';
 
-export default class ImageText extends Component {
-  render() {
-    const { image, text } = this.props.pageBuilder;
+export default function ImageText(props) {
+  const { image, text } = props?.pageBuilder;
 
-    return (
-      <div>
-        {image[0] && <Image src={image[0].url} />}
-        {text && <Text tag="div">{text}</Text>}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {image[0] && <Image src={image[0].url} />}
+      {text && <Text element="div">{text}</Text>}
+    </div>
+  );
 }
 
 export const query = graphql`

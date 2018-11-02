@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
+
 import Headline from 'components/Headline';
 import TextDefault from 'components/Text';
 
-export default class Text extends Component {
-  render() {
-    const { text, headline, headlineTag } = this.props.pageBuilder;
+export default function Text(props) {
+  const { text, headline, headlineTag } = props?.pageBuilder;
 
-    return (
-      <div>
-        {headline && <Headline tag={headlineTag}>{headline}</Headline>}
-        {text && <TextDefault tag="span">{text}</TextDefault>}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {headline && <Headline element={headlineTag}>{headline}</Headline>}
+      {text && <TextDefault element="span">{text}</TextDefault>}
+    </div>
+  );
 }
 
 export const query = graphql`

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'react-emotion';
+
 import Headline from 'components/Headline';
 import Text from 'components/Text';
 
@@ -22,22 +23,20 @@ const HeroContent = styled('div')({
   textAlign: 'center',
 });
 
-export default class Hero extends Component {
-  render() {
-    const { headline, text, backgroundImage } = this.props.pageBuilder;
-    const bgImage = backgroundImage[0]
-      ? `url(' ${backgroundImage[0].url} ')`
-      : 'none';
+export default function Hero(props) {
+  const { headline, text, backgroundImage } = props?.pageBuilder;
+  const bgImage = backgroundImage[0]
+    ? `url(' ${backgroundImage[0].url} ')`
+    : 'none';
 
-    return (
-      <HeroSection backgroundImage={bgImage}>
-        <HeroContent>
-          {headline && <Headline tag="h1">{headline}</Headline>}
-          {text && <Text tag="span">{text}</Text>}
-        </HeroContent>
-      </HeroSection>
-    );
-  }
+  return (
+    <HeroSection backgroundImage={bgImage}>
+      <HeroContent>
+        {headline && <Headline element="h1">{headline}</Headline>}
+        {text && <Text element="span">{text}</Text>}
+      </HeroContent>
+    </HeroSection>
+  );
 }
 
 export const query = graphql`
