@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
-import NullWrap from 'NullWrap';
+import NullWrap from 'components/NullWrap';
 
 const StyledWrapImage = styled('div')(
   {
