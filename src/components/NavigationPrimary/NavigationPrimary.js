@@ -10,6 +10,8 @@ import WrapGrid from 'components/WrapGrid';
 import Image from 'components/Image';
 import NavigationPrimarySections from 'components/NavigationPrimarySections';
 import Footer from 'components/Footer';
+import Grid from 'components/Grid';
+import GridItem from 'components/GridItem';
 
 const NavigationItem = styled('h3')(
   {
@@ -40,19 +42,25 @@ export default function NavigationPrimary(props) {
       />
       <Overlay position="fixed" />
       <Header />
-      <WrapGrid>
-        {allItems.map(item => (
-          <NavigationItem key={item.navigationEntry[0].id}>
-            <Link
-              activecss="opacity: 0.5;"
-              to={item.navigationEntry[0].fullUri}
-            >
-              {item.navigationEntry[0].title}
-            </Link>
-          </NavigationItem>
-        ))}
 
-        <NavigationPrimarySections content={navigationTeaser} />
+      <WrapGrid>
+        <Grid>
+          <GridItem tabletFluid={1 / 2}>
+            {allItems.map(item => (
+              <NavigationItem key={item.navigationEntry[0].id}>
+                <Link
+                  activecss="opacity: 0.5;"
+                  to={item.navigationEntry[0].fullUri}
+                >
+                  {item.navigationEntry[0].title}
+                </Link>
+              </NavigationItem>
+            ))}
+          </GridItem>
+          <GridItem tabletFluid={1 / 2}>
+            <NavigationPrimarySections content={navigationTeaser} />
+          </GridItem>
+        </Grid>
       </WrapGrid>
       <Footer />
     </Wrap>
