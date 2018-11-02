@@ -11,7 +11,6 @@ module.exports = async ({ actions, graphql }) => {
         entries {
           id
           fullUri
-          __typename
           section {
             handle
           }
