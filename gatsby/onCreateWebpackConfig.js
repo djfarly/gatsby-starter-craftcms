@@ -18,7 +18,7 @@ const purgeCssConfig = {
   whitelist: [''],
   whitelistPatterns: [/body/, /headroom/, /ReactModal/, /ril/],
 };
-
+console.log(__dirname);
 module.exports = ({ actions, stage, getConfig }) => {
   const prevConfig = getConfig();
 
@@ -59,7 +59,9 @@ module.exports = ({ actions, stage, getConfig }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        '~': `${__dirname}/src`,
+        '~': path.resolve(__dirname, '../src/'),
+        components: path.resolve(__dirname, '../src/components/'),
+        utils: path.resolve(__dirname, '../src/utils/'),
         'node-fetch$': 'node-fetch/lib/index.js', // https://github.com/bitinn/node-fetch/issues/493
       },
     },
