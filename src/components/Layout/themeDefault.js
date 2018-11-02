@@ -30,4 +30,5 @@ module.exports = {
   spaceDoubleThirds: '64px',
   spaceTriple: '72px',
   spaceQuad: '96px',
+  gridSpaceGutter: '24px', // space
 };
