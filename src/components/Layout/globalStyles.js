@@ -10,6 +10,7 @@ injectGlobal`
   }
   body {
     background-color: ${themeDefault.backgroundPrimary};
+    overflow-y: scroll;
   }
   * {
     box-sizing: inherit;
