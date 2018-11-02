@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-import config from 'site.config.js';
+import config from '~/site.config.js';
 import media from 'utils/mediaqueries';
 
 const wrapSizes = config?.responsive?.wrapSizes;
