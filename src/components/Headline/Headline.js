@@ -13,6 +13,7 @@ const StyledH1 = styled('h1')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
@@ -27,6 +28,7 @@ const StyledH2 = styled('h2')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
@@ -41,6 +43,7 @@ const StyledH3 = styled('h3')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
@@ -50,6 +53,7 @@ const StyledH4 = styled('h4')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
@@ -59,6 +63,7 @@ const StyledH5 = styled('h5')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
@@ -68,11 +73,12 @@ const StyledH6 = styled('h6')(
   },
   props => ({
     color: props.theme.colorBright,
+    margin: props.margin,
   }),
 );
 
 export default function Headline(props) {
-  const { element, children } = props;
+  const { element, children, margin } = props;
   const ComponentList = {
     h1: StyledH1,
     h2: StyledH2,
@@ -83,7 +89,7 @@ export default function Headline(props) {
   };
   const Component = ComponentList[element];
 
-  return <Component>{children}</Component>;
+  return <Component margin={margin}>{children}</Component>;
 }
 
 Headline.propTypes = {
