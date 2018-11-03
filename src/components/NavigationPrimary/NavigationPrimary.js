@@ -16,6 +16,7 @@ import GridItem from 'components/GridItem';
 const NavigationItem = styled('h3')(
   {
     fontSize: '24px',
+    lineHeight: '32px',
     fontWeight: 900,
     letterSpacing: '3px',
     textTransform: 'uppercase',
@@ -44,10 +45,15 @@ export default function NavigationPrimary(props) {
       <Header />
 
       <WrapGrid>
-        <Grid>
-          <GridItem tabletFluid={1 / 2}>
+        <Grid last>
+          <GridItem
+            tablet={1 / 2}
+            tabletFluid={1 / 3}
+            laptop={1 / 4}
+            desktop={1 / 5}
+          >
             {allItems.map(item => (
-              <NavigationItem key={item.navigationEntry[0].id}>
+              <NavigationItem key={item.navigationEntry[0].id + Math.random()}>
                 <Link
                   activecss="opacity: 0.5;"
                   to={item.navigationEntry[0].fullUri}
@@ -57,7 +63,12 @@ export default function NavigationPrimary(props) {
               </NavigationItem>
             ))}
           </GridItem>
-          <GridItem tabletFluid={1 / 2}>
+          <GridItem
+            tablet={1 / 2}
+            tabletFluid={2 / 3}
+            laptop={3 / 4}
+            desktop={4 / 5}
+          >
             <NavigationPrimarySections content={navigationTeaser} />
           </GridItem>
         </Grid>
