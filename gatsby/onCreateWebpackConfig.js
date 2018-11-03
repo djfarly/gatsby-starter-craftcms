@@ -18,7 +18,7 @@ const purgeCssConfig = {
   whitelist: [''],
   whitelistPatterns: [/body/, /headroom/, /ReactModal/, /ril/],
 };
-console.log(__dirname);
+
 module.exports = ({ actions, stage, getConfig }) => {
   const prevConfig = getConfig();
 
