@@ -1,8 +1,11 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import themeDefault from 'components/Layout/themeDefault';
+
+// import WrapGrid from 'components/WrapGrid';
+// import NullWrap from 'components/NullWrap';
 
 const StyledGrid = styled('div')(
   {
@@ -15,7 +18,6 @@ const StyledGrid = styled('div')(
       props.theme.gridSpaceGutter
     }`,
     boxDirection: props.boxDirection,
-    log: console.log(props.boxDirection),
     alignSelf: props.alignself,
     alignItems: props.alignitems,
     justifyContent: props.spacing,
@@ -35,6 +37,7 @@ export default function Grid(props) {
     between,
     around,
     reverse,
+    // isNested,
   } = props;
 
   const boxDirection = {
@@ -58,26 +61,31 @@ export default function Grid(props) {
     around: 'space-around',
   };
 
+  // Only use wrapper if this is not an already nested grid
+  // const WrapComponent = isNested ? WrapGrid : NullWrap;
+
   return (
-    <GridContext.Provider value={{ gutter }}>
-      <StyledGrid
-        gutter={gutter}
-        alignself={
-          selfAlignment[
-            (left && 'left') || (center && 'center') || (right && 'right')
-          ]
-        }
-        alignitems={
-          itemsAlignment[
-            (top && 'top') || (middle && 'middle') || (bottom && 'bottom')
-          ]
-        }
-        spacing={itemsSpacings[(around && 'around') || (between && 'between')]}
-        boxDirection={boxDirection[reverse && 'reverse']}
-      >
-        {children}
-      </StyledGrid>
-    </GridContext.Provider>
+    // <WrapComponent>
+    // <GridContext.Provider value={{ gutter }}>
+    <StyledGrid
+      gutter={gutter}
+      alignself={
+        selfAlignment[
+          (left && 'left') || (center && 'center') || (right && 'right')
+        ]
+      }
+      alignitems={
+        itemsAlignment[
+          (top && 'top') || (middle && 'middle') || (bottom && 'bottom')
+        ]
+      }
+      spacing={itemsSpacings[(around && 'around') || (between && 'between')]}
+      boxDirection={boxDirection[reverse && 'reverse']}
+    >
+      {children}
+    </StyledGrid>
+    // </GridContext.Provider>
+    // </WrapComponent>
   );
 }
 
@@ -92,6 +100,7 @@ Grid.propTypes = {
   between: PropTypes.bool,
   around: PropTypes.bool,
   reverse: PropTypes.bool,
+  // isNested: PropTypes.bool,
 };
 
 Grid.defaultProps = {
@@ -105,11 +114,14 @@ Grid.defaultProps = {
   between: false,
   around: false,
   reverse: false,
+  // isNested: false,
 };
 
-export const GridContext = createContext({
-  gutter: Grid.defaultProps.gutter,
-});
+// export const GridContext = createContext({
+//   gutter: '24px',
+//   // gutter: Grid.defaultProps.gutter,
+//   // isNested: Grid.defaultProps.isNested,
+// });
 
 // Settings
 

@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import media from 'utils/mediaqueries';
 
-import { GridContext } from 'components/Grid/Grid';
+import themeDefault from 'components/Layout/themeDefault';
+
+// import { GridContext } from 'components/Grid/Grid';
 
 const StyledGridItem = styled('div')(
   {
@@ -44,9 +46,10 @@ export default function GridItem(props) {
     tabletFluid,
     laptop,
     desktop,
+    gutter,
   } = props;
 
-  const { gutter } = useContext(GridContext);
+  // const { gutter } = useContext(GridContext);
 
   const order = {
     first: '1',
@@ -82,10 +85,12 @@ GridItem.propTypes = {
   mobile: PropTypes.number,
   first: PropTypes.bool,
   last: PropTypes.bool,
+  gutter: PropTypes.string,
 };
 
 GridItem.defaultProps = {
   mobile: 1,
   first: false,
   last: false,
+  gutter: themeDefault.gridSpaceGutter,
 };
