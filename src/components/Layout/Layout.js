@@ -7,23 +7,14 @@ import themeDefault from './themeDefault';
 import './globalStyles';
 
 const RouteContainer = posed.div({
-  entering: { x: '100%' },
+  entering: { opacity: 0 },
   enter: {
     opacity: 1,
-    delay: 100,
-    x: 0,
-    transition: {
-      opacity: { ease: 'easeOut', duration: 300 },
-      x: { ease: 'easeIn', duration: 300 },
-    },
+    transition: { opacity: { ease: 'easeIn', duration: 200 } },
   },
   exit: {
     opacity: 0,
-    x: '-10%',
-    delay: 0,
-    transition: {
-      opacity: { ease: 'easeOut', duration: 150 },
-    },
+    transition: { opacity: { ease: 'easeOut', duration: 200 } },
   },
 });
 
