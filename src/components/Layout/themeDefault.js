@@ -12,9 +12,9 @@ module.exports = {
   colorLinkHover: '#02b0ab',
   colorLinkActive: '#02b0ab',
   colorLinkCurrent: 'red',
-  scrollBarThumb: '#eaeaea',
-  scrollBarTrack: '#f9f9f9',
-  scrollBarWidth: '10px',
+  scrollBarThumb: '#333',
+  scrollBarTrack: '#ccc',
+  scrollBarWidth: '2px',
   colorBright: '#fff',
   colorDark: '#000',
   spaceEight: '3px',
@@ -30,5 +30,5 @@ module.exports = {
   spaceDoubleThirds: '64px',
   spaceTriple: '72px',
   spaceQuad: '96px',
-  gridSpaceGutter: '24px', // space
+  gridSpaceGutter: '56px', // spaceDoubleEight
 };
