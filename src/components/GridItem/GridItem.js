@@ -31,10 +31,6 @@ const StyledGridItem = styled('div')(
     },
     padding: `${props.gutter} 0 0 ${props.gutter}`,
     order: props.order,
-    boxDirection: props.boxDirection,
-    alignSelf: props.alignself,
-    alignItems: props.alignitems,
-    justifyContent: props.spacing,
   }),
 );
 
@@ -43,15 +39,6 @@ export default function GridItem(props) {
     children,
     first,
     last,
-    left,
-    center,
-    right,
-    top,
-    middle,
-    bottom,
-    between,
-    around,
-    reverse,
     mobile,
     tablet,
     tabletFluid,
@@ -66,27 +53,6 @@ export default function GridItem(props) {
     last: '-1',
   };
 
-  const boxDirection = {
-    reverse: 'reverse',
-  };
-
-  const selfAlignment = {
-    left: 'flex-start',
-    center: 'center',
-    right: 'flex-end',
-  };
-
-  const itemsAlignment = {
-    top: 'flex-start',
-    middle: 'center',
-    bottom: 'flex-end',
-  };
-
-  const itemsSpacings = {
-    between: 'space-between',
-    around: 'space-around',
-  };
-
   function toPercent(number) {
     if (typeof number !== 'number') return number;
     return `${number * 100}%`;
@@ -97,39 +63,10 @@ export default function GridItem(props) {
   const percentLaptop = toPercent(laptop);
   const percentDesktop = toPercent(desktop);
 
-  // const mobile = {
-  //   '1/1': '100%',
-  //   '1/2': '50%',
-  //   '1/3': '33.33333%',
-  //   '1/4': '25%',
-  //   '1/5': '20%',
-  //   '1/6': '16.66666%',
-  //   '1/7': '14.2857%',
-  //   '1/8': '12.5%',
-  //   '1/9': '11.11111%',
-  //   '1/10': '10%',
-  //   '1/11': '9.09090%',
-  //   '1/12': '8.33333%',
-  // };
-
-  // <GridItem mobile="1/2" desktop="1/4">Hi</GridItem>
-
   return (
     <StyledGridItem
       gutter={gutter}
       order={order[(first && 'first') || (last && 'last')]}
-      alignself={
-        selfAlignment[
-          (left && 'left') || (center && 'center') || (right && 'right')
-        ]
-      }
-      alignitems={
-        itemsAlignment[
-          (top && 'top') || (middle && 'middle') || (bottom && 'bottom')
-        ]
-      }
-      spacing={itemsSpacings[(around && 'around') || (between && 'between')]}
-      boxDirection={boxDirection[reverse && 'reverse']}
       mobile={percentMobile}
       tablet={percentTablet}
       tabletFluid={percentTabletFluid}
@@ -145,28 +82,10 @@ GridItem.propTypes = {
   mobile: PropTypes.number,
   first: PropTypes.bool,
   last: PropTypes.bool,
-  left: PropTypes.bool,
-  center: PropTypes.bool,
-  right: PropTypes.bool,
-  top: PropTypes.bool,
-  middle: PropTypes.bool,
-  bottom: PropTypes.bool,
-  between: PropTypes.bool,
-  around: PropTypes.bool,
-  reverse: PropTypes.bool,
 };
 
 GridItem.defaultProps = {
   mobile: 1,
   first: false,
   last: false,
-  left: false,
-  center: false,
-  right: false,
-  top: false,
-  middle: false,
-  bottom: false,
-  between: false,
-  around: false,
-  reverse: false,
 };

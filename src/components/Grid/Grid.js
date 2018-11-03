@@ -8,29 +8,103 @@ const StyledGrid = styled('div')(
   {
     display: 'flex',
     flexWrap: 'wrap',
-    listStyle: 'none',
     padding: 0,
   },
   props => ({
-    margin: `${props.theme.gridSpaceGutter} 0 0 ${props.theme.gridSpaceGutter}`,
+    margin: `-${props.theme.gridSpaceGutter} 0 0 -${
+      props.theme.gridSpaceGutter
+    }`,
+    boxDirection: props.boxDirection,
+    log: console.log(props.boxDirection),
+    alignSelf: props.alignself,
+    alignItems: props.alignitems,
+    justifyContent: props.spacing,
   }),
 );
 
 export default function Grid(props) {
-  const { children, gutter } = props;
+  const {
+    children,
+    gutter,
+    left,
+    center,
+    right,
+    top,
+    middle,
+    bottom,
+    between,
+    around,
+    reverse,
+  } = props;
+
+  const boxDirection = {
+    reverse: 'reverse',
+  };
+
+  const selfAlignment = {
+    left: 'flex-start',
+    center: 'center',
+    right: 'flex-end',
+  };
+
+  const itemsAlignment = {
+    top: 'flex-start',
+    middle: 'center',
+    bottom: 'flex-end',
+  };
+
+  const itemsSpacings = {
+    between: 'space-between',
+    around: 'space-around',
+  };
+
   return (
     <GridContext.Provider value={{ gutter }}>
-      <StyledGrid gutter={gutter}>{children}</StyledGrid>
+      <StyledGrid
+        gutter={gutter}
+        alignself={
+          selfAlignment[
+            (left && 'left') || (center && 'center') || (right && 'right')
+          ]
+        }
+        alignitems={
+          itemsAlignment[
+            (top && 'top') || (middle && 'middle') || (bottom && 'bottom')
+          ]
+        }
+        spacing={itemsSpacings[(around && 'around') || (between && 'between')]}
+        boxDirection={boxDirection[reverse && 'reverse']}
+      >
+        {children}
+      </StyledGrid>
     </GridContext.Provider>
   );
 }
 
 Grid.propTypes = {
   gutter: PropTypes.string,
+  left: PropTypes.bool,
+  center: PropTypes.bool,
+  right: PropTypes.bool,
+  top: PropTypes.bool,
+  middle: PropTypes.bool,
+  bottom: PropTypes.bool,
+  between: PropTypes.bool,
+  around: PropTypes.bool,
+  reverse: PropTypes.bool,
 };
 
 Grid.defaultProps = {
   gutter: themeDefault.gridSpaceGutter,
+  left: false,
+  center: false,
+  right: false,
+  top: false,
+  middle: false,
+  bottom: false,
+  between: false,
+  around: false,
+  reverse: false,
 };
 
 export const GridContext = createContext({
@@ -41,63 +115,6 @@ export const GridContext = createContext({
 
 // // Grid
 // .#{$base-prefix}o-grid {
-
-//   &__item {
-//     flex: 1;
-//     padding: to-rem($object-grid-gutter) 0 0 to-rem($object-grid-gutter);
-
-//     // Reorders column as first `grid__item`
-//     @include breakpoints-to-element('&--first') {
-//       order: -1;
-//     }
-
-//     // Reorders column as last `grid__item`
-//     @include breakpoints-to-element('&--last') {
-//       order: 1;
-//     }
-//   }
-
-//   // Horizontal align
-//   @include breakpoints-to-element('&--center') {
-//     align-self: center;
-//   }
-
-//   @include breakpoints-to-element('&--left') {
-//     align-self: flex-start;
-//   }
-
-//   @include breakpoints-to-element('&--right') {
-//     align-self: flex-end;
-//   }
-
-//   // Justify
-//   // @credit
-//   // https://css-tricks.com/almanac/properties/j/justify-content/
-//   @include breakpoints-to-element('&--justify-between') {
-//     justify-content: space-between;
-//   }
-
-//   @include breakpoints-to-element('&--justify-around') {
-//     justify-content: space-around;
-//   }
-
-//   // Vertical align
-//   @include breakpoints-to-element('&--top') {
-//     align-items: flex-start;
-//   }
-
-//   @include breakpoints-to-element('&--middle') {
-//     align-items: center;
-//   }
-
-//   @include breakpoints-to-element('&--bottom') {
-//     align-items: flex-end;
-//   }
-
-//   // Revert
-//   @include breakpoints-to-element('&--revert') {
-//     box-direction: reverse;
-//   }
 
 //   // Unified fractions applied via grid modifier.
 //   // If there is no unique grid__item behaviour this is the cleanest method to
