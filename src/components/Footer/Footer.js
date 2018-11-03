@@ -3,20 +3,16 @@ import styled from 'react-emotion';
 
 import WrapGrid from 'components/WrapGrid';
 
-const StyledFooter = styled('div')(
-  {
-    position: 'absolute',
-    bottom: '0',
-    left: '0',
-    height: '100px',
-    width: '100%',
-  },
-  // props => ({
-  // }),
-);
+const StyledFooter = styled('div')({
+  position: 'fixed',
+  bottom: '0',
+  left: '0',
+  zIndex: '3',
+  height: '100px',
+  width: '100%',
+});
 
 export default function Header() {
-  // const {} = props;
   return (
     <StyledFooter>
       <WrapGrid>

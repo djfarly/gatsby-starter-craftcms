@@ -1,27 +1,29 @@
 import React from 'react';
 import styled from 'react-emotion';
 
+import Grid from 'components/Grid';
+import GridItem from 'components/GridItem';
 import WrapGrid from 'components/WrapGrid';
 import Logo from 'components/Logo';
 
-const StyledHeader = styled('div')(
-  {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    height: '100px',
-    width: '100%',
-  },
-  // props => ({
-  // }),
-);
+const StyledHeader = styled('div')({
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  zIndex: '3',
+  height: '100px',
+  width: '100%',
+});
 
 export default function Header() {
-  // const {} = props;
   return (
     <StyledHeader>
       <WrapGrid>
-        <Logo />
+        <Grid>
+          <GridItem>
+            <Logo />
+          </GridItem>
+        </Grid>
       </WrapGrid>
     </StyledHeader>
   );
