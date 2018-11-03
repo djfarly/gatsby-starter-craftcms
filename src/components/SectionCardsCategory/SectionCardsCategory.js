@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function SectionCardsCategory(props) {
-  return <div>cardscategory</div>;
+import Headline from 'components/Headline';
+
+export default function SectionCardsCategory() {
+  return <Headline margin="0 0 6px 0">SectionCardsCategory Component</Headline>;
 }

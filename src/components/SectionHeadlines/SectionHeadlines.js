@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function SectionHeadlines(props) {
-  return <div>headlines</div>;
+import Headline from 'components/Headline';
+
+export default function SectionHeadlines() {
+  return <Headline margin="0 0 6px 0">SectionHeadlines Component</Headline>;
 }

@@ -1,104 +1,75 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import styled from 'react-emotion';
 
-import Header from 'components/Header';
-import Overlay from 'components/Overlay';
-import Link from 'components/Link';
-import Wrap from 'components/Wrap';
-import WrapGrid from 'components/WrapGrid';
-import Image from 'components/Image';
-import NavigationPrimarySections from 'components/NavigationPrimarySections';
-import Footer from 'components/Footer';
-import Grid from 'components/Grid';
-import GridItem from 'components/GridItem';
+import NavigationPrimaryItem from 'components/NavigationPrimaryItem';
 
-const NavigationItem = styled('h3')(
+import config from '~/site.config.js';
+import media from 'utils/mediaqueries';
+
+const NavigationWrap = styled('div')({
+  height: '80vh',
+  [media('tabletFluid')]: {
+    position: 'relative',
+    width: '100%',
+  },
+});
+
+const NavigationPositioner = styled('div')({
+  [media('tabletFluid')]: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    width: '200%',
+    height: '100%',
+    overflow: 'hidden',
+  },
+});
+
+const NavigationHolder = styled('div')(
   {
-    fontSize: '24px',
-    lineHeight: '32px',
-    fontWeight: 900,
-    letterSpacing: '3px',
-    textTransform: 'uppercase',
+    width: '100%',
+    height: 'auto',
   },
   props => ({
-    color: props.theme.colorBright,
-    fontFamily: props.theme.fontFamilySecondary,
-    marginBottom: props.theme.spaceDoubleEight,
+    width: '202px',
+    // [media('tablet')]: {
+    //   width: wrapSizes.tablet,
+    // },
+    [media('tabletFluid')]: {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      width: '202px', // this needs to be a calculation
+      height: '100%',
+    },
+    [media('laptop')]: {
+      width: '282px', // this needs to be a calculation
+    },
+    [media('desktop')]: {
+      width: '376px', // this needs to be a calculation
+    },
   }),
 );
 
+// console.log(wrapSizes.laptop - (wrapSizes.laptop / 3) * 2 - 56); // should look something like this
+
 export default function NavigationPrimary(props) {
-  const { allItems, currentItem } = props;
-  const { navigationTeaser, navigationBackground } = currentItem;
+  const { data, currentId } = props;
 
   return (
-    <Wrap height="100vh">
-      <Image
-        src={navigationBackground[0].url}
-        alt={navigationBackground[0].title}
-        isBackground
-        fit="cover"
-        position="fixed"
-      />
-      <Overlay position="fixed" />
-      <Header />
-
-      <WrapGrid>
-        <Grid last>
-          <GridItem
-            tablet={1 / 2}
-            tabletFluid={1 / 3}
-            laptop={1 / 4}
-            desktop={1 / 5}
-          >
-            {allItems.map(item => (
-              <NavigationItem key={item.navigationEntry[0].id + Math.random()}>
-                <Link
-                  activecss="opacity: 0.5;"
-                  to={item.navigationEntry[0].fullUri}
-                >
-                  {item.navigationEntry[0].title}
-                </Link>
-              </NavigationItem>
-            ))}
-          </GridItem>
-          <GridItem
-            tablet={1 / 2}
-            tabletFluid={2 / 3}
-            laptop={3 / 4}
-            desktop={4 / 5}
-          >
-            <NavigationPrimarySections content={navigationTeaser} />
-          </GridItem>
-        </Grid>
-      </WrapGrid>
-      <Footer />
-    </Wrap>
+    <NavigationWrap>
+      <NavigationPositioner>
+        <NavigationHolder>
+          {data.map(item => (
+            <NavigationPrimaryItem
+              key={item.id + Math.random()}
+              data={item}
+              isActive={currentId === item.id}
+              show={item.navigationEntry[0]} // Only if navigationEntry is set within craft cms
+            />
+          ))}
+        </NavigationHolder>
+      </NavigationPositioner>
+    </NavigationWrap>
   );
 }
-
-export const queryAllItems = graphql`
-  fragment NavigationAllItems on Craft_NavigationPrimaryNavigation {
-    navigationEntry {
-      id
-      fullUri
-      title
-    }
-    navigationTeaser
-    navigationBackground {
-      url
-      title
-    }
-  }
-`;
-
-export const queryCurrentItem = graphql`
-  fragment NavigationCurrentItem on Craft_NavigationPrimaryNavigation {
-    navigationEntry {
-      id
-      fullUri
-      title
-    }
-  }
-`;
