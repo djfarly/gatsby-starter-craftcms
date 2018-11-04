@@ -3,6 +3,14 @@ import styled from 'react-emotion';
 
 import Link from 'components/Link';
 
+const StyledLogoWrap = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  height: 'inherit',
+});
+
 const StyledLogo = styled('span')({}, props => ({
   color: props.theme.colorPrimary,
   fontWeight: 900,
@@ -12,8 +20,10 @@ const StyledLogo = styled('span')({}, props => ({
 
 export default function Logo() {
   return (
-    <Link csshover="color: #00fff8;" to="/de/start">
-      <StyledLogo>Evo Fitness</StyledLogo>
-    </Link>
+    <StyledLogoWrap>
+      <Link csshover="color: #00fff8;" to="/de/start">
+        <StyledLogo>Evo Fitness</StyledLogo>
+      </Link>
+    </StyledLogoWrap>
   );
 }

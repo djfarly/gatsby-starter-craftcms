@@ -14,6 +14,7 @@ const StyledGridItem = styled('div')(
   },
   props => ({
     width: props.mobile,
+    height: props.height,
     flexBasis: props.mobile,
     [media('tablet')]: {
       width: props.tablet,
@@ -39,6 +40,7 @@ const StyledGridItem = styled('div')(
 export default function GridItem(props) {
   const {
     children,
+    height,
     first,
     last,
     mobile,
@@ -69,6 +71,7 @@ export default function GridItem(props) {
   return (
     <StyledGridItem
       gutter={gutter}
+      height={height}
       order={order[(first && 'first') || (last && 'last')]}
       mobile={percentMobile}
       tablet={percentTablet}
@@ -86,6 +89,7 @@ GridItem.propTypes = {
   first: PropTypes.bool,
   last: PropTypes.bool,
   gutter: PropTypes.string,
+  height: PropTypes.string,
 };
 
 GridItem.defaultProps = {
@@ -93,4 +97,5 @@ GridItem.defaultProps = {
   first: false,
   last: false,
   gutter: themeDefault.gridSpaceGutter,
+  height: 'inherit',
 };

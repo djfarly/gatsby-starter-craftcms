@@ -42,8 +42,10 @@ export default function WrapGrid(props) {
 
 WrapGrid.propTypes = {
   margin: PropTypes.string,
+  height: PropTypes.string,
 };
 
 WrapGrid.defaultProps = {
   margin: '0 auto',
+  height: 'inherit',
 };

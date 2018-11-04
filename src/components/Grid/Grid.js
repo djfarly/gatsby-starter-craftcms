@@ -21,6 +21,7 @@ const StyledGrid = styled('div')(
     alignSelf: props.alignself,
     alignItems: props.alignitems,
     justifyContent: props.spacing,
+    height: props.height,
   }),
 );
 
@@ -28,6 +29,7 @@ export default function Grid(props) {
   const {
     children,
     gutter,
+    height,
     left,
     center,
     right,
@@ -69,6 +71,7 @@ export default function Grid(props) {
     // <GridContext.Provider value={{ gutter }}>
     <StyledGrid
       gutter={gutter}
+      height={height}
       alignself={
         selfAlignment[
           (left && 'left') || (center && 'center') || (right && 'right')
@@ -100,6 +103,7 @@ Grid.propTypes = {
   between: PropTypes.bool,
   around: PropTypes.bool,
   reverse: PropTypes.bool,
+  height: PropTypes.string,
   // isNested: PropTypes.bool,
 };
 
@@ -114,6 +118,7 @@ Grid.defaultProps = {
   between: false,
   around: false,
   reverse: false,
+  height: 'inherit',
   // isNested: false,
 };
 

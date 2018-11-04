@@ -6,7 +6,7 @@ import GridItem from 'components/GridItem';
 import WrapGrid from 'components/WrapGrid';
 import Logo from 'components/Logo';
 
-const StyledHeader = styled('div')({
+const StyledHeaderWrap = styled('div')({
   position: 'absolute',
   top: '0',
   left: '0',
@@ -15,16 +15,24 @@ const StyledHeader = styled('div')({
   width: '100%',
 });
 
+const StyledHeader = styled('div')({
+  height: 'inherit',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export default function Header() {
   return (
-    <StyledHeader>
+    <StyledHeaderWrap>
       <WrapGrid>
         <Grid>
           <GridItem>
-            <Logo />
+            <StyledHeader>
+              <Logo />
+            </StyledHeader>
           </GridItem>
         </Grid>
       </WrapGrid>
-    </StyledHeader>
+    </StyledHeaderWrap>
   );
 }
