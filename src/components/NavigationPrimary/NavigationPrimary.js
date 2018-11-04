@@ -3,13 +3,14 @@ import styled from 'react-emotion';
 
 import NavigationPrimaryItem from 'components/NavigationPrimaryItem';
 
-import config from '~/site.config.js';
+// import config from '~/site.config.js';
 import media from 'utils/mediaqueries';
 
 const NavigationWrap = styled('div')({
-  height: '80vh',
+  height: 'auto',
   [media('tabletFluid')]: {
     position: 'relative',
+    height: '80vh',
     width: '100%',
   },
 });
@@ -31,7 +32,6 @@ const NavigationHolder = styled('div')(
     height: 'auto',
   },
   props => ({
-    width: '202px',
     // [media('tablet')]: {
     //   width: wrapSizes.tablet,
     // },

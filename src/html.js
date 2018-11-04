@@ -29,7 +29,6 @@ export default function HTML(props) {
         {preBodyComponents}
         <div
           key="body"
-          className="overflow-x-hidden w-full relative"
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: body }}
         />
