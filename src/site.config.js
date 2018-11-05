@@ -1,3 +1,5 @@
+const theme = require('./components/Layout/themeDefault');
+
 module.exports = {
   siteMetadata: {
     siteTitle: 'Evo Fitness',
@@ -15,7 +17,10 @@ module.exports = {
   },
   webfontconfig: {
     google: {
-      families: ['Open Sans:400,700', 'Montserrat:400,900'],
+      families: [
+        `${theme.fontPrimaryFamily}:${theme.fontPrimaryCuts}`,
+        `${theme.fontSecondaryFamily}:${theme.fontSecondaryFamily}`,
+      ],
     },
   },
   responsive: {

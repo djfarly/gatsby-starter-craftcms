@@ -5,7 +5,7 @@ import themeDefault from './themeDefault';
 injectGlobal`
   html {
     box-sizing: border-box;
-    font-family: ${themeDefault.fontFamilySecondary};
+    font-family: ${themeDefault.fontSecondary};
     color: ${themeDefault.colorText};
   }
   body {
