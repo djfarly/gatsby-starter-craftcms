@@ -23,13 +23,6 @@ export default function Logo() {
     <StyledLogoWrap>
       <Link csshover="color: #fff;" to="/de/start">
         <StyledLogo>
-          <Icon type="arrowLeft" />
-          <Icon type="arrowRight" />
-          <Icon type="hamburger" />
-          <Icon type="socialInstagram" />
-          <Icon type="socialFacebook" />
-          <Icon type="logoEvo" />
-          <Icon type="logoEvo" width="50" />
           <Icon type="logoEvo" />
         </StyledLogo>
       </Link>

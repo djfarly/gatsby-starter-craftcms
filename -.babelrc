@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "babel-plugin-ramda",
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "babel-plugin-emotion",
+      {
+        "extract": true
+      }
+    ]
+  ]
+}

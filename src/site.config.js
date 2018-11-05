@@ -19,7 +19,7 @@ module.exports = {
     google: {
       families: [
         `${theme.fontPrimaryFamily}:${theme.fontPrimaryCuts}`,
-        `${theme.fontSecondaryFamily}:${theme.fontSecondaryFamily}`,
+        `${theme.fontSecondaryFamily}:${theme.fontSecondaryCuts}`,
       ],
     },
   },
