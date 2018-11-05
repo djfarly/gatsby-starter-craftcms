@@ -15,7 +15,7 @@ module.exports = {
   },
   webfontconfig: {
     google: {
-      families: ['Open Sans:400,700'],
+      families: ['Open Sans:400,700', 'Montserrat:400,900'],
     },
   },
   responsive: {
